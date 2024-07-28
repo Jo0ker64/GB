@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GeekBook - Connexion et Inscription</title>
+    <link rel="stylesheet" href="../CSS/style.css">
+</head>
+<body>
+    <div class="container">
+        <div class="left-side">
+            <div class="cmp-info">
+                <div class="cm-logo">
+                    <img src="../images/logo_black_bg_white_removebg.png" alt="GeekBook Logo" class="logo">
+                    <p>GeekBook est un réseau social dédié aux geeks et geekettes !!!</p>
+                    <p>Tant que cela concerne l'univers de la pop-culture, vous êtes le bienvenue!!</p>
+                    <p>On ne parle pas de politique, sauf si c'est l'empire qui est concerné !!!</p>
+                </div>
+            </div>
+        </div>
+        <div class="right-side">
+            <div class="form-container">
+                <div class="sign-control">
+                    <ul>
+                        <li data-tab="tab-1" class="current"><a href="#" onclick="showTab('tab-1')">Se connecter</a></li>
+                        <li data-tab="tab-2"><a href="#" onclick="showTab('tab-2')">S'inscrire</a></li>
+                    </ul>
+                </div>
+                <div class="form-body">
+                    <div class="sign_in_sec current" id="tab-1">
+                        <h3>Se connecter</h3>
+                        {{ form_start(loginForm) }}
+                            <div class="sn-field">
+                                {{ form_widget(loginForm.email, { 'attr': {'placeholder': 'Email'} }) }}
+                                <i class="la la-at"></i>
+                            </div>
+                            <div class="sn-field">
+                                {{ form_widget(loginForm.password, { 'attr': {'placeholder': 'Mot de passe'} }) }}
+                                <i class="la la-lock"></i>
+                            </div>
+                            <div class="checky-sec">
+                                {# <div class="fgt-sec">
+                                    {{ form_widget(loginForm._remember_me) }}
+                                    <label for="remember_me">
+                                        <span></span>
+                                    </label>
+                                    <small>Se souvenir de moi</small>
+                                </div> #}
+                                <a href="#" title="">Mot de passe oublié?</a>
+                            </div>
+                        {{ form_end(loginForm) }}
+                        {% if error %}
+                            <div class="error-message">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+                        {% endif %}
+                    </div>
+                    <div class="sign_in_sec" id="tab-2">
+                        <h3>S'inscrire</h3>
+                        {{ form_start(registrationForm) }}
+                            <div class="sn-field">
+                                {{ form_widget(registrationForm.firstName, { 'attr': {'placeholder': 'Prénom'} }) }}
+                                <i class="la la-user"></i>
+                            </div>
+                            <div class="sn-field">
+                                {{ form_widget(registrationForm.lastName, { 'attr': {'placeholder': 'Nom'} }) }}
+                                <i class="la la-user"></i>
+                            </div>
+                            <div class="sn-field">
+                                {{ form_widget(registrationForm.email, { 'attr': {'placeholder': 'Email'} }) }}
+                                <i class="la la-at"></i>
+                            </div>
+                            <div class="sn-field">
+                                {{ form_widget(registrationForm.plainPassword.first, { 'attr': {'placeholder': 'Mot de passe'} }) }}
+                                <i class="la la-lock"></i>
+                            </div>
+                            <div class="sn-field">
+                                {{ form_widget(registrationForm.plainPassword.second, { 'attr': {'placeholder': 'Répéter le mot de passe'} }) }}
+                                <i class="la la-lock"></i>
+                            </div>
+                            <div class="checky-sec st2">
+                                <div class="fgt-sec">
+                                    <input type="checkbox" name="cc" id="c2">
+                                    <label for="c2">
+                                        <span></span>
+                                    </label>
+                                    <small>Je comprends et j'accepte les conditions générales de GeekBook.</small>
+                                </div>
+                            </div>
+                        {{ form_end(registrationForm) }}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <footer>
+        <p>© Copyright 2024 Développé par Jonathan Auroux Martel</p>
+    </footer>
+    <script>
+        function showTab(tabId) {
+            document.querySelectorAll('.sign_in_sec').forEach(function(tab) {
+                tab.classList.remove('current');
+            });
+            document.getElementById(tabId).classList.add('current');
+
+            document.querySelectorAll('.sign-control li').forEach(function(tab) {
+                tab.classList.remove('current');
+            });
+            document.querySelector('[data-tab="' + tabId + '"]').classList.add('current');
+        }
+    </script>
+</body>
+</html>

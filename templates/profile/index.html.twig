@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profil Interface</title>
+    <link rel="stylesheet" href="{{ asset('CSS/style.css') }}">
+    <link rel="stylesheet" href="{{ asset('CSS/bootstrap.css') }}">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <input type="text" placeholder="Search...">
+            <nav>
+                <a href="#">Fil d'actu</a>
+                <a href="#">Profils</a>
+                <a href="#">Messages</a>
+                <a href="#">Notification</a>
+                <span>{{ user.username }}</span>
+            </nav>
+        </header>
+        <main>
+            <div class="sidebar-left">
+                <div class="friend-count">
+                    <h2>Nombre d'amis</h2>
+                    <span>34</span>
+                </div>
+                <div class="links">
+                    <ul>
+                        <li><a href="#">www.example.com</a></li>
+                        <li><a href="#">www.facebook.com</a></li>
+                        <li><a href="#">www.twitter.com</a></li>
+                        <li><a href="#">www.googleplus.com</a></li>
+                        <li><a href="#">www.pinterest.com</a></li>
+                        <li><a href="#">www.instagram.com</a></li>
+                        <li><a href="#">www.youtube.com</a></li>
+                        <li><a href="#">www.linkedin.com</a></li>
+                        <li><a href="#">www.twitch.com</a></li>
+                        <li><a href="#">www.github.com</a></li>
+                    </ul>
+                </div>
+                <div class="friend-suggestions">
+                    <h2>Suggestions d'amis</h2>
+                    <ul>
+                        <li>User friend <button>+</button></li>
+                        <li>User friend <button>+</button></li>
+                        <li>User friend <button>+</button></li>
+                        <li>User friend <button>+</button></li>
+                        <li>User friend <button>+</button></li>
+                        <li>User friend <button>+</button></li>
+                    </ul>
+                    <a href="#">Voir plus</a>
+                </div>
+            </div>
+            <div class="main-content">
+                <h1>{{ user.username }}</h1>
+                <div class="posts">
+                    <div class="post">
+                        <p>{{ user.username }}</p>
+                        <span>3 min ago</span>
+                        <div class="actions">
+                            <button>Liker</button>
+                            <button>Commenter</button>
+                            <button>Partager</button>
+                            <span>Vues</span>
+                        </div>
+                    </div>
+                    <div class="post">
+                        <p>{{ user.username }}</p>
+                        <span>3 min ago</span>
+                        <div class="actions">
+                            <button>Liker</button>
+                            <button>Commenter</button>
+                            <button>Partager</button>
+                            <span>Vues</span>
+                        </div>
+                    </div>
+                    <div class="post">
+                        <p>{{ user.username }}</p>
+                        <span>3 min ago</span>
+                        <div class="actions">
+                            <button>Liker</button>
+                            <button>Commenter</button>
+                            <button>Partager</button>
+                            <span>Vues</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="sidebar-right">
+                <button>Envoyer un message</button>
+                <button>Ajouter en amis</button>
+            </div>
+        </main>
+    </div>
+</body>
+</html>
