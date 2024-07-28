@@ -3,7 +3,6 @@
 namespace App\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
 
@@ -11,7 +10,7 @@ class ProfileController extends AbstractController
 {
     // Route pour la page de profil
     #[Route('/profile', name: 'app_profile')]
-    public function index(Request $request): Response
+    public function index(): Response
     {
         $user = $this->getUser(); // Récupération de l'utilisateur connecté
 
