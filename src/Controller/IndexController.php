@@ -18,32 +18,28 @@ class IndexController extends AbstractController
     private $passwordHasher; // Déclaration de la propriété pour le hachage de mot de passe
     private $entityManager; // Déclaration de la propriété pour le gestionnaire d'entités
 
-     // Constructeur pour injecter les services de hachage de mot de passe et le gestionnaire d'entités
-     public function __construct(UserPasswordHasherInterface $passwordHasher, EntityManagerInterface $entityManager)
-     {
-         $this->passwordHasher = $passwordHasher; // Initialisation du hachage de mot de passe
-         $this->entityManager = $entityManager; // Initialisation du gestionnaire d'entités
-     }
-    
     // Route pour la page d'accueil
     #[Route('/', name: 'app_home')]
     public function index(Request $request, AuthenticationUtils $authenticationUtils): Response
     {
+       
         $user = new User();// Création d'un nouvel utilisateur pour le formulaire d'inscription
         $registrationForm = $this->createForm(RegistrationFormType::class, $user); // Création du formulaire d'inscription
         $registrationForm->handleRequest($request);// Traitement de la requête pour le formulaire d'inscription
 
-
+        
+       
         // Vérification si le formulaire est soumis et valide
         if ($registrationForm->isSubmitted() && $registrationForm->isValid()) {
             // Hachage du mot de passe de l'utilisateur
+            
             $user->setPassword(
                 $this->passwordHasher->hashPassword(
                     $user,
                     $registrationForm->get('plainPassword')->getData()
                 )
             );
-
+           
             $this->entityManager->persist($user); // Persistance de l'utilisateur dans la base de données
             $this->entityManager->flush();  // Sauvegarde des modifications dans la base de données
 
@@ -73,6 +69,7 @@ class IndexController extends AbstractController
      #[Route('/profile', name: 'app_profile')]
      public function profile(): Response
      {
+       
          // Récupération de l'utilisateur connecté
          $user = $this->getUser();
  
@@ -92,6 +89,8 @@ class IndexController extends AbstractController
      #[Route('/login', name: 'app_login')]
      public function login(AuthenticationUtils $authenticationUtils): Response
      {
+
+       
          // Récupération des erreurs de connexion
          $error = $authenticationUtils->getLastAuthenticationError();
          // Récupération du dernier nom d'utilisateur utilisé

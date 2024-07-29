@@ -34,6 +34,9 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Column(type: 'string', length: 255, nullable: true)]
     private ?string $profilePicture = null;
 
+    #[ORM\Column(type: 'string', length: 255, nullable: true)]
+    private ?string $username = null;
+
     #[ORM\Column(type:'string', length: 255, nullable: true)]
     private ?string $coverPicture = null;
 
@@ -131,6 +134,18 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     public function setCoverPicture(?string $coverPicture): static
     {
         $this->coverPicture = $coverPicture;
+
+        return $this;
+    }
+
+    public function getUsername(): ?string
+    {
+        return $this->username;
+    }   
+
+    public function setUsername(?string $username): static
+    {
+        $this->username = $username;
 
         return $this;
     }
