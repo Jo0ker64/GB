@@ -119,6 +119,7 @@ class IndexController extends AbstractController
          throw new \Exception('This method can be blank - it will be intercepted by the logout key on your firewall');
      }
 
+     
         // Route pour l'inscription d'un nouvel utilisateur
      #[Route('/registration', name: 'app_registration')] 
      public function registration(Request $request, UserPasswordHasherInterface $passwordHasher, EntityManagerInterface $entityManager): Response

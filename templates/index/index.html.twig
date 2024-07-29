@@ -26,11 +26,11 @@
                         <li data-tab="tab-2"><a href="#" onclick="showTab('tab-2')">S'inscrire</a></li>
                     </ul>
                 </div>
+
+
                 <div class="form-body">
                     <div class="sign_in_sec current" id="tab-1">
-                        <h3>Se connecter</h3>
-                    
-                        {{ form_start(loginForm) }}
+                              {{ form_start(loginForm) }}
                             <div class="sn-field">
                                 {{ form_widget(loginForm.email, { 'attr': {'placeholder': 'Email'} }) }}
                                 <i class="la la-at"></i>
@@ -50,12 +50,15 @@
                                 <a href="#" title="">Mot de passe oublié?</a>
                             </div>
                         {{ form_end(loginForm) }}
+                    
                         {% if error %}
                             <div class="error-message">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
                         {% endif %}
                     </div>
+
+
                     <div class="sign_in_sec" id="tab-2">
-                        <h3>S'inscrire</h3>
+                      
                         {{ form_start(registrationForm) }}
                             <div class="sn-field">
                                 {{ form_widget(registrationForm.firstName, { 'attr': {'placeholder': 'Prénom'} }) }}
@@ -77,7 +80,7 @@
                                 {{ form_widget(registrationForm.plainPassword.second, { 'attr': {'placeholder': 'Répéter le mot de passe'} }) }}
                                 <i class="la la-lock"></i>
                             </div>
-                            <div class="checky-sec st2">
+                            {# <div class="checky-sec st2">
                                 <div class="fgt-sec">
                                     <input type="checkbox" name="cc" id="c2">
                                     <label for="c2">
@@ -85,8 +88,9 @@
                                     </label>
                                     <small>Je comprends et j'accepte les conditions générales de GeekBook.</small>
                                 </div>
-                            </div>
+                            </div> #}
                         {{ form_end(registrationForm) }}
+
                     </div>
                 </div>
             </div>
